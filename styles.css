@@ -1,3 +1,64 @@
 body {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.main-section {
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    color: white;
+    font-weight:700;
+}
+
+
+.calculator-body {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: blue;
+    width: 25%;
+    padding: 10px;
+    justify-content: flex-end;
+
+}
+
+.display-screen {
+    font-family: 'Orbitron', sans-serif;
+    border: 2px solid black;
+    width: 100%;
+    text-align: right;
+    font-size: 3rem;
+    background-color: rgb(170, 192, 147);
+}
+
+
+
+.button-area {
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+button {
+    margin: 2%;
+    font-size: 3rem;
+    padding: 10px;
+    width: 70px;
+}
+
+.number-buttons {
+    width: 75%;
+    display:flex;
+    flex-wrap: wrap;
+  
+}
+
+.operator-buttons {
+    width: 25%;
+}
+
+.op-btn {
     background-color: red;
+    width: 100%;
 }
