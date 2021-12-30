@@ -38,7 +38,7 @@ function operator(x, y, op) {
     return result;
 }
 
-// alert(operator(12, 4, '/'));
+
 
 let numButtons = document.querySelectorAll(".numBtn");
 let opButtons = document.querySelectorAll(".op-btn");
@@ -63,7 +63,6 @@ numButtons.forEach((numButton) => {
 opButtons.forEach((opButton) => {
     opButton.addEventListener("click", (e) => {
         selectedOpButton = e.target.value;
-        console.log(operand);
         bothNums.push(operand);
         numValue = 0;
     });
