@@ -58,7 +58,7 @@ button {
     width: 25%;
 }
 
-.op-btn {
+.op-btn, .eq-btn {
     background-color: red;
     width: 100%;
 }
