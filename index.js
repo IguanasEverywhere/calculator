@@ -48,7 +48,9 @@ let selectedNumButton;
 let selectedOpButton;
 let numValue = 0;
 let operand;
-let bothNums =[];
+let allNums = [];
+let allOps = [];
+let runningTotal;
 
 numButtons.forEach((numButton) => {
     numButton.addEventListener("click", (e) => {
@@ -63,14 +65,23 @@ numButtons.forEach((numButton) => {
 opButtons.forEach((opButton) => {
     opButton.addEventListener("click", (e) => {
         selectedOpButton = e.target.value;
-        bothNums.push(operand);
+        allNums.push(operand);
         numValue = 0;
+        allOps.push(selectedOpButton);
+
+        if (allNums.length === 1) {
+            runningTotal = operand;
+        } else {
+            runningTotal = operator(runningTotal, allNums[allNums.length - 1], allOps[allNums.length - 2]);
+        }
+        displayScreen.textContent = (runningTotal);
     });
 });
 
 let eqButton = document.querySelector(".eq-btn");
 eqButton.addEventListener("click", () => {
-    bothNums.push(operand);
-    displayScreen.textContent = Number(operator(bothNums[0], bothNums[1], selectedOpButton));
+    allNums.push(operand);
+    runningTotal = operator(runningTotal, allNums[allNums.length - 1], allOps[allNums.length - 2]);
+    displayScreen.textContent = runningTotal;
 });
 
