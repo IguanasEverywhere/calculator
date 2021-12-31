@@ -1,11 +1,9 @@
 function add(a, b) {
     return a + b;
-
 }
 
 function subtract(a, b) {
     return a - b;
-
 }
 
 function multiply(a, b) {
@@ -29,7 +27,12 @@ function operator(x, y, op) {
             result = (multiply(x, y));
             break;
         case '/':
-            result = divide(x, y);
+            if (y === 0) {
+                result = "Srsly? / 0!?";
+            } else {
+                result = divide(x, y);
+            }
+            
             break;
         default:
             result = "error, not an operator.";
@@ -64,6 +67,7 @@ numButtons.forEach((numButton) => {
 
 opButtons.forEach((opButton) => {
     opButton.addEventListener("click", (e) => {
+        eqButton.disabled = false;
         selectedOpButton = e.target.value;
         allNums.push(operand);
         numValue = 0;
@@ -74,14 +78,15 @@ opButtons.forEach((opButton) => {
         } else {
             runningTotal = operator(runningTotal, allNums[allNums.length - 1], allOps[allNums.length - 2]);
         }
-        displayScreen.textContent = (runningTotal);
+        displayScreen.textContent = runningTotal;
     });
 });
 
 let eqButton = document.querySelector(".eq-btn");
+eqButton.disabled = true;
 eqButton.addEventListener("click", () => {
-    allNums.push(operand);
-    runningTotal = operator(runningTotal, allNums[allNums.length - 1], allOps[allNums.length - 2]);
-    displayScreen.textContent = runningTotal;
+        allNums.push(operand);
+        runningTotal = operator(runningTotal, allNums[allNums.length - 1], allOps[allNums.length - 2]);
+        displayScreen.textContent = runningTotal;
 });
 
