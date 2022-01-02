@@ -54,11 +54,16 @@ let operand;
 let allNums = [];
 let allOps = [];
 let runningTotal;
+let maxLength = 10;
 
 numButtons.forEach((numButton) => {
     numButton.addEventListener("click", (e) => {
         selectedNumButton = e.target.value;
         numValue += selectedNumButton;
+
+        if (numValue > maxLength) {
+            numValue = numValue.substr(0, maxLength);
+        }
         displayScreen.textContent = Number(numValue);
         operand = Number(numValue);
     });
@@ -78,6 +83,10 @@ opButtons.forEach((opButton) => {
         } else {
             runningTotal = operator(runningTotal, allNums[allNums.length - 1], allOps[allNums.length - 2]);
         }
+        if (!Number.isInteger(runningTotal)) {
+            runningTotal = runningTotal.toFixed(7);
+            runningTotal = parseFloat(runningTotal);
+        }
         displayScreen.textContent = runningTotal;
     });
 });
@@ -87,6 +96,10 @@ eqButton.disabled = true;
 eqButton.addEventListener("click", () => {
         allNums.push(operand);
         runningTotal = operator(runningTotal, allNums[allNums.length - 1], allOps[allNums.length - 2]);
+        if (!Number.isInteger(runningTotal)) {
+            runningTotal = runningTotal.toFixed(7);
+            runningTotal = parseFloat(runningTotal);
+        }
         displayScreen.textContent = runningTotal;
 });
 
