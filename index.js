@@ -90,3 +90,12 @@ eqButton.addEventListener("click", () => {
         displayScreen.textContent = runningTotal;
 });
 
+let clButton = document.querySelector(".clrBtn");
+clButton.addEventListener("click", () => {
+    displayScreen.textContent = 0;
+    allNums = [];
+    allOps = [];
+    runningTotal = 0;
+    numValue = 0;
+});
+
