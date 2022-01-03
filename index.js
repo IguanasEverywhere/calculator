@@ -119,5 +119,5 @@ clButton.addEventListener("click", () => {
 let decButton = document.querySelector(".decBtn");
 decButton.addEventListener("click", () => {
     decButton.disabled = true;
-})
+});
 
