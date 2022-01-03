@@ -73,6 +73,7 @@ numButtons.forEach((numButton) => {
 opButtons.forEach((opButton) => {
     opButton.addEventListener("click", (e) => {
         eqButton.disabled = false;
+        decButton.disabled = false;
         selectedOpButton = e.target.value;
         allNums.push(operand);
         numValue = 0;
@@ -92,8 +93,9 @@ opButtons.forEach((opButton) => {
 });
 
 let eqButton = document.querySelector(".eq-btn");
-eqButton.disabled = true;
+
 eqButton.addEventListener("click", () => {
+        eqButton.disabled = true;
         allNums.push(operand);
         runningTotal = operator(runningTotal, allNums[allNums.length - 1], allOps[allNums.length - 2]);
         if (!Number.isInteger(runningTotal)) {
@@ -105,10 +107,17 @@ eqButton.addEventListener("click", () => {
 
 let clButton = document.querySelector(".clrBtn");
 clButton.addEventListener("click", () => {
+    decButton.disabled = false;
+    eqButton.disabled = false;
     displayScreen.textContent = 0;
     allNums = [];
     allOps = [];
     runningTotal = 0;
     numValue = 0;
 });
+
+let decButton = document.querySelector(".decBtn");
+decButton.addEventListener("click", () => {
+    decButton.disabled = true;
+})
 
